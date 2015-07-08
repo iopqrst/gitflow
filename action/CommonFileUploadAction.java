@@ -12,15 +12,6 @@ import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.struts2.ServletActionContext;
-import org.springframework.context.annotation.Scope;
-
-import com.bskcare.ch.util.DateUtils;
-import com.bskcare.ch.util.StringUtils;
-import com.bskcare.ch.util.SystemConfig;
-import com.bskcare.ch.vo.ClientInfo;
-
 @Scope("prototype")
 public class CommonFileUploadAction extends BaseAction {
 
