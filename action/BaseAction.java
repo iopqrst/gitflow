@@ -14,9 +14,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 
+import com.bskcare.ch.bo.crm.CrmUserInfo;
+import com.bskcare.ch.constant.Constant;
+import com.bskcare.ch.query.util.PageObject;
+import com.bskcare.ch.query.util.QueryInfo;
+import com.bskcare.ch.service.ManageLogService;
+import com.bskcare.ch.service.UserInfoService;
+import com.bskcare.ch.util.StringUtils;
+import com.bskcare.ch.util.SystemConfig;
+import com.bskcare.ch.vo.ClientInfo;
+import com.bskcare.ch.vo.ManageLog;
+import com.bskcare.ch.vo.UserInfo;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -32,6 +48,38 @@ public class BaseAction extends ActionSupport {
 	private static final long serialVersionUID = 6574855907824041503L;
 
 	protected transient final Logger log = Logger.getLogger(getClass());
+
+	/**
+	 * 用户id
+	 */
+	protected Integer cid;
+
+	public String get_() {
+		return _;
+	}
+
+	public void set_(String _) {
+		this._ = _;
+	}
+
+	/**
+	 * 初始化系统访问图片路径
+	 */
+	protected void initBaseImageUrl() {
+		sput("base_image", SystemConfig.getString("image_base_url"));
+	}
+
+	protected ServletContext getServletContext() {
+		return ServletActionContext.getServletContext();
+	}
+
+	protected HttpServletRequest getRequest() {
+		return ServletActionContext.getRequest();
+	}
+
+	protected HttpServletResponse getResponse() {
+		return ServletActionContext.getResponse();
+	}
 
 	/**
 	 * 从ActionContext中获取值 ActionContext.getContext().get(key);
