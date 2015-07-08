@@ -20,5 +20,11 @@ public class RedirectAction extends BaseAction {
 		
 		return reStr;
 	}
+	
+	public String execute() throws Exception {
+		
+		
+		return "hello";
+	}
 
 }
